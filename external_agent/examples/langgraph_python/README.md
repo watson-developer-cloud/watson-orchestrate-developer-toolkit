@@ -55,7 +55,7 @@ It is recommended to implement your own authentication security measures to ensu
 
 4. **Set Environment Variables:**
    - Add the following environment variables:
-     - `WATSONX_SPACE_ID`
+     - `WATSONX_SPACE_ID` or `WATSONX_PROJECT_ID`
      - `WATSONX_API_KEY`
      - `OPENAI_API_KEY` (only needed if you plan to use OpenAI models)
    - Select the `Create` button

@@ -18,6 +18,7 @@ logger.setLevel(logging.DEBUG)
 WATSONX_DEPLOYMENT_ID = os.getenv("WATSONX_DEPLOYMENT_ID")
 WATSONX_API_KEY = os.getenv("WATSONX_API_KEY")
 WATSONX_SPACE_ID = os.getenv("WATSONX_SPACE_ID")
+WATSONX_PROJECT_ID = os.getenv("WATSONX_PROJECT_ID")
 WATSONX_URL = os.getenv("WATSONX_URL", "https://us-south.ml.cloud.ibm.com")
 
 
@@ -54,8 +55,11 @@ def _get_access_token():
 
 def _get_wxai_client():
     credentials = {"url": WATSONX_URL, "token": _get_access_token()}
-    return APIClient(credentials, space_id=WATSONX_SPACE_ID)
-
+    if WATSONX_PROJECT_ID:
+            return APIClient(credentials, project_id=WATSONX_PROJECT_ID)
+    if WATSONX_SPACE_ID:
+        return APIClient(credentials, space_id=WATSONX_SPACE_ID)
+    raise ValueError("Both WATSONX_PROJECT_ID and WATSONX_SPACE_ID are None. Please provide at least one.")
 
 def get_llm_sync(messages: List[Message]) -> list[Message]:
 

@@ -193,6 +193,9 @@ components:
                         items:
                           type: object
                           properties:
+                            id:
+                              type: string
+                              description: Unique identifier for the tool call
                             name:
                               type: string
                               description: The name of the tool being called

@@ -10,7 +10,7 @@ from tools import web_search_duckduckgo, news_search_duckduckgo
 from llm_utils import get_llm_sync, get_llm_stream
 
 logger = logging.getLogger()
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
 console_handler.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
